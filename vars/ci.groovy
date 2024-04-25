@@ -12,7 +12,7 @@ def call() {
                 }
             }
         }
-        stages {
+
             stage('Unittest') {
                 steps {
                     script {
@@ -20,8 +20,7 @@ def call() {
                     }
                 }
             }
-        }
-        stages {
+
             stage('Quality check') {
                 steps {
                     script {
@@ -29,8 +28,8 @@ def call() {
                     }
                 }
             }
-        }
-        stages {
+
+
             stage('Upload artifacts') {
                 steps {
                     script {
@@ -38,6 +37,6 @@ def call() {
                     }
                 }
             }
-        }
+
     }
 }
