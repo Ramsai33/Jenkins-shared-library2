@@ -4,15 +4,40 @@ def call() {
         agent any
 
         stages {
-            stage('Hello') {
+            stage('Build/compile') {
                 steps {
                     script {
-                        echo "Hello"
+                        echo "compile"
                     }
                 }
             }
         }
-
-
+        stages {
+            stage('Unittest') {
+                steps {
+                    script {
+                        echo "unit test"
+                    }
+                }
+            }
+        }
+        stages {
+            stage('Quality check') {
+                steps {
+                    script {
+                        echo "Quality check"
+                    }
+                }
+            }
+        }
+        stages {
+            stage('Upload artifacts') {
+                steps {
+                    script {
+                        echo "Upload artifacts"
+                    }
+                }
+            }
+        }
     }
 }
