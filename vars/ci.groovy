@@ -9,7 +9,7 @@ def call() {
             stage('Build/compile') {
                 steps {
                     script {
-                        echo "compile"
+                        common.compile()
                     }
                 }
             }
