@@ -1,7 +1,9 @@
 def call() {
 
     pipeline {
-        agent any
+        agent {
+            label 'workstation'
+        }
 
         stages {
             stage('Build/compile') {
