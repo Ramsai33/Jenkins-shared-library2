@@ -1,7 +1,9 @@
 def call() {
     node('workstation') {
-        stage('Compile or build') {
-            echo "hello"
+        stage('Clean workspace') {
+            cleanws()
+            git branch: 'main', url: "https://github.com/Ramsai33/${component}.git"
+            sh 'env'
         }
 
     }
