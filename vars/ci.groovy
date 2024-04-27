@@ -1,12 +1,11 @@
 def call() {
     node('workstation') {
-        if(!env.SONAR_EXTRA_OPTS) {
+        if (!env.SONAR_EXTRA_OPTS) {
             env.SONAR_EXTRA_OPTS = " "
         }
-        if(!env.TAG_NAME) {
+        if (!env.TAG_NAME) {
             env.PUSH_CODE = "false"
-        }
-        else {
+        } else {
             env.PUSH_CODE = "true"
         }
 
@@ -28,10 +27,12 @@ def call() {
                 sh "sonar-scanner -Dsonar.host.url=http://172.31.31.13:9000 -Dsonar.login=$SONAR_USER -Dsonar.password=$SONAR_PASS -Dsonar.projectKey=${component} ${SONAR_EXTRA_OPTS}"
             }
         }
-        stage('Upload Artifacts') {
-            echo "artifacts"
+        if (env.PUSH_CODE == "true") {
+            stage('Upload Artifacts') {
+                echo "artifacts"
+            }
+
         }
+
     }
-
-
 }
