@@ -3,6 +3,13 @@ def call() {
         if(!env.SONAR_EXTRA_OPTS) {
             env.SONAR_EXTRA_OPTS = " "
         }
+        if(!env.TAG_NAME) {
+            env.PUSH_CODE = "false"
+        }
+        else {
+            env.PUSH_CODE = "true"
+        }
+
         stage('Clean workspace') {
             cleanWs()
             git branch: 'main', url: "https://github.com/Ramsai33/${component}.git"
