@@ -19,3 +19,10 @@ def unittest() {
     }
 
 }
+
+def artifactspush() {
+    sh "echo ${TAG_NAME} > VERSION"
+    if(app_lang == "nginx") {
+        sh "zip -r ${component}-${TAG_NAME}.zip      VERSION"
+    }
+}
